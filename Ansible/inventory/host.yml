@@ -1,8 +1,8 @@
-localhost ansible_connection=local
+localhost ansible_connection=local ansible_user=root
 
 [Server]
 localhost 
 
 [Server:vars]
 ansible_python_interperter= /usr/bin/python3.9
-ansi_user= devops
+
