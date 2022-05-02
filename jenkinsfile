@@ -13,7 +13,7 @@ pipeline {
         stage('Build') {
             steps {
                    script{
-                   ansiblePlaybook credentialsId: 'private_key', disableHostKeyChecking: true, installation: 'ansible', inventory: '/Ansible/inventory/host.yml', playbook: '/Ansible/build.yml'
+                   sh "ansible-playbook Ansible/build.yml -i Ansible/inventory/host.yml AUTO_USER --private-key=/etc/ssh/ssh_host_rsa_key"
                    }
 
                 
