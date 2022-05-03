@@ -1,4 +1,4 @@
-localhost ansible_connection=local ansible_user=root
+localhost ansible_connection=local ansible_user=devops
 
 [Server]
 localhost 
