@@ -13,7 +13,7 @@ pipeline {
         stage('Build') {
             steps {
                    script{
-                   ansiblePlaybook credentialsId: 'private_key', installation: 'ansible', inventory: 'Ansible/inventory/host.yml', playbook: 'Ansible/build.yml '
+                   ansiblePlaybook credentialsId: 'private_key', installation: 'ansible', inventory: 'Ansible/inventory/host.yml', playbook: 'build.yml '
                    }
 
                 
