@@ -1,8 +1,4 @@
-localhost ansible_connection=local ansible_user=devops
+localhost ansible_connection=local 
 
-[Server]
-localhost 
 
-[Server:vars]
-ansible_python_interperter= /usr/bin/python3.9
 
