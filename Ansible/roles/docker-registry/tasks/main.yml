@@ -1,0 +1,13 @@
+---
+# tasks file for docker-registry
+- name: login into docker hub regitry
+  docker_login: 
+    email: "kabil.benhamda@gmail.com"
+    username: "cain12"
+    password: "Luffy_1987."
+- name: tag and push to docker hub
+  docker_image:
+    name: devops:latest
+    repository: cain12/devops
+    push: yes
+    source: local       
