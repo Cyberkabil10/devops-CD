@@ -5,5 +5,5 @@ localhost
 
 [Server:vars]
 ansible_python_interperter= /usr/bin/python3
-ansible_user=devops
+ansible_user=root
 
