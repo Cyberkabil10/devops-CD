@@ -3,8 +3,7 @@
 - name: create image docker
   docker_image:
     name: devops
-    user: root
-    build: 
+     build: 
      path: /var/lib/jenkins/workspace/devops
      pull: no
     source: build 
