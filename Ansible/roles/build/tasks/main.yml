@@ -1,4 +1,4 @@
 ---
 # build project
        - name: build app
-         shell: npm install && ng build --prod && chmod 777 -R /var/lib/jenkins/workspace/devops/
+         shell: npm install && npm run build --prod && chmod 777 -R /var/lib/jenkins/workspace/devops/
