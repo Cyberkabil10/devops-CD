@@ -3,12 +3,10 @@ name: ci
 on:
   push:
     branches:
-      - 'main'
-    tags:
-      - 'v*'
+      - "main"
   pull_request:
     branches:
-      - 'main'
+      - "main"
 
 jobs:
   docker:
@@ -18,16 +16,20 @@ jobs:
         name: Checkout
         uses: actions/checkout@v3
       -
-        name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v4
-        with:
-          images: |
-            cain12/actions
-          tags: |
-            type=semver,pattern={{version}}
+        name: Semantic versioning
+        id: versioning
+        uses: paulhatch/semantic-version@v5.0.2
+        with: 
+          branch: main
+          tag_prefix: "v"
+          major_pattern: "BREAKING CHANGE:"
+          minor_pattern: "feat:"
+          format: "v${major}.${minor}.${patch}-prerelease${increment}"	
       -
-        name: Login to DockerHub
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      -
+        name: Login to Docker Hub
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v2
         with:
@@ -38,6 +40,5 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          push: ${{ github.event_name == 'push tag' }}
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ env.REPO }}:latest,${{ env.REPO }}:${{ steps.versioning.outputs.version }}
