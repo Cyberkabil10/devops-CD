@@ -27,13 +27,13 @@ jobs:
             cain12/actions
           # generate Docker tags based on the following events/attributes
           tags: |
-            type=schedule
-            type=ref,event=branch
-            type=ref,event=pr
+            #type=schedule
+            #type=ref,event=branch
+            #type=ref,event=pr
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
-            type=sha
+            #type=sha
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
